@@ -14,12 +14,15 @@ async function shortenUrl() {
 
   try {
     const res = await fetch(`${API}/api/shorten`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ originalUrl: url })
-    });
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ originalUrl: url })
+});
+
+    console.log("STATUS:", res.status);
 
     const data = await res.json();
+    console.log("DATA:", data);
 
     const shortLink = `${API}/api/${data.shortUrl}`;
 
