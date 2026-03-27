@@ -1,10 +1,7 @@
 console.log("JS WORKING");
 
-const API = "https://url-shortener-backend.onrender.com";
+const API = "https://url-shortener-demo-v1.onrender.com";
 
-app.get("/", (req, res) => {
-  res.send("Backend working ✅");
-});
 async function shortenUrl() {
   alert("CLICK WORKING");
 
@@ -15,22 +12,28 @@ async function shortenUrl() {
     return;
   }
 
-  const res = await fetch(`${API}/api/shorten`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ originalUrl: url })
-  });
+  try {
+    const res = await fetch(`${API}/api/shorten`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ originalUrl: url })
+    });
 
-  const data = await res.json();
+    const data = await res.json();
 
-  const shortLink = `${API}/api/${data.shortUrl}`;
+    const shortLink = `${API}/api/${data.shortUrl}`;
 
-  document.getElementById("result").innerHTML =
-    `Short URL: <a href="${shortLink}" target="_blank">${shortLink}</a>`;
+    document.getElementById("result").innerHTML =
+      `Short URL: <a href="${shortLink}" target="_blank">${shortLink}</a>`;
 
-  document.getElementById("copyBtn").style.display = "inline-block";
+    document.getElementById("copyBtn").style.display = "inline-block";
 
-  window.shortLink = shortLink;
+    window.shortLink = shortLink;
+
+  } catch (err) {
+    console.error(err);
+    alert("Error connecting to server");
+  }
 }
 
 // COPY FUNCTION
