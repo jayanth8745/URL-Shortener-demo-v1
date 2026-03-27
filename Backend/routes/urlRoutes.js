@@ -2,11 +2,6 @@ const express = require("express");
 const router = express.Router();
 const Url = require("../models/url");
 
-app.get("/test", (req, res) => {
-  res.send("API working ✅");
-});
-
-
 // CREATE
 router.post("/shorten", async (req, res) => {
   try {
@@ -20,7 +15,9 @@ router.post("/shorten", async (req, res) => {
 
     const newUrl = new Url({
       originalUrl,
-      shortUrl
+      shortUrl,
+      clicks: 0
+
     });
 
     await newUrl.save();
@@ -44,10 +41,11 @@ router.get("/:shortUrl", async (req, res) => {
       return res.redirect(url.originalUrl);
     }
 
-    res.status(404).send("URL not found");
+    return res.status(404).send("URL not found");
 
   } catch (err) {
-    res.status(500).send("Error");
+    console.error(err);
+    return res.status(500).send("Error");
   }
 });
 
