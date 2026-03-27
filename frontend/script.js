@@ -1,6 +1,9 @@
 console.log("JS WORKING");
+
+const API = "https://url-shortener-backend.onrender.com";
+
 async function shortenUrl() {
-    alert("CLICK WORKING");
+  alert("CLICK WORKING");
 
   const url = document.getElementById("urlInput").value;
 
@@ -9,7 +12,7 @@ async function shortenUrl() {
     return;
   }
 
-  const res = await fetch("http://localhost:5000/api/shorten", {
+  const res = await fetch(`${API}/api/shorten`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ originalUrl: url })
@@ -17,19 +20,15 @@ async function shortenUrl() {
 
   const data = await res.json();
 
-  const shortLink = `http://localhost:5000/api/${data.shortUrl}`;
+  const shortLink = `${API}/api/${data.shortUrl}`;
 
-  // Show clickable link
   document.getElementById("result").innerHTML =
     `Short URL: <a href="${shortLink}" target="_blank">${shortLink}</a>`;
 
-  // Show copy button
   document.getElementById("copyBtn").style.display = "inline-block";
 
-  // Save for copy
   window.shortLink = shortLink;
 }
-
 
 // COPY FUNCTION
 function copyLink() {
