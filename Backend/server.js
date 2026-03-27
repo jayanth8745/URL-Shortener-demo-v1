@@ -8,7 +8,7 @@ app.use(express.json());
 app.use(cors());
 
 // Connect to MongoDB
-mongoose.connect("mongodb://localhost:27017/urlshortener")
+mongoose.connect("mongodb+srv://admin:xCvcZjwUfMZPBgjZ@cluster0.vfgnckp.mongodb.net/?appName=Cluster0")
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.log(err));
 
