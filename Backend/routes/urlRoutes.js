@@ -2,6 +2,11 @@ const express = require("express");
 const router = express.Router();
 const Url = require("../models/url");
 
+app.get("/test", (req, res) => {
+  res.send("API working ✅");
+});
+
+
 // CREATE
 router.post("/shorten", async (req, res) => {
   try {
