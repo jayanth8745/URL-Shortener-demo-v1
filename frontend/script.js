@@ -2,6 +2,9 @@ console.log("JS WORKING");
 
 const API = "https://url-shortener-backend.onrender.com";
 
+app.get("/", (req, res) => {
+  res.send("Backend working ✅");
+});
 async function shortenUrl() {
   alert("CLICK WORKING");
 
