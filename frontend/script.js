@@ -13,15 +13,18 @@ async function shortenUrl() {
   }
 
   try {
-    const res = await fetch(`${API}/api/shorten`, {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ originalUrl: url })
-});
+   const res = await fetch(`${API}/api/shorten`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ originalUrl: url })
+   });
 
-    console.log("STATUS:", res.status);
+   // CHECK RESPONSE FIRST
+   if (!res.ok) {
+    throw new Error("Server error");
+   }
 
-    const data = await res.json();
+  const data = await res.json();
     console.log("DATA:", data);
 
     const shortLink = `${API}/api/${data.shortUrl}`;
