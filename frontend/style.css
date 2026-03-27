@@ -1,48 +1,86 @@
-/* Reset some default styles */
+/* PARTICLES BACKGROUND */
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: #ffe600; /* dark blue background */
+
+  z-index: 0;
+}
+
+/* CENTER YOUR BOX */
 body {
-  font-family: Arial, sans-serif;
-  background: #f4f6f9;
   margin: 0;
-  padding: 0;
+  height: 100vh;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
-/* Container */
-h1 {
-  color: #333;
+/* YOUR UI BOX */
+.box {
+  pointer-events: auto; /* Allow interaction with the box */
+  background: transparent;
+  padding: 30px;
+  border: 4px solid black;
+  width: 350px;
   text-align: center;
-  margin-bottom: 20px;
+
+  box-shadow: 8px 8px 0 black;
+
+  position: relative;
+  z-index: 1;
+}
+
+/* Keep your UI above */
+.box {
+  position: relative;
+  z-index: 1;
+}
+
+
+h1 {
+  font-size: 24px;
+  margin: auto;
 }
 
 input {
-  width: 300px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  margin-right: 10px;
+  width: 90%;
+  padding: 12px;
+  margin:auto;
+  margin-bottom:auto;
+  border: 3px solid black(153, 14, 14, 0.501);
   font-size: 14px;
 }
 
 button {
-  padding: 10px 15px;
-  background: #007bff;
+  background: #ff3b3b;
   color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
+  padding: 12px 20px;
+  border: 3px solid black;
   font-size: 14px;
-  transition: background 0.3s ease;
+  cursor: pointer;
+
+  box-shadow: 4px 4px 0px black;
 }
 
-button:hover {
-  background: #0056b3;
+/* Button press effect */
+button:active {
+  transform: translate(4px, 4px);
+  box-shadow: none;
 }
 
-p#result {
-  margin-top: 20px;
+#result {
+  margin-top: 15px;
   font-weight: bold;
-  color: #444;
+}
+
+a {
+  color: black;
+  text-decoration: underline;
 }

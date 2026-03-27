@@ -1,14 +1,77 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>URL Shortener</title>
+  <meta charset="utf-8">
+  <title>🔗 URL Shortener</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Simple URL Shortener</h1>
-  <input type="text" id="urlInput" placeholder="Enter URL">
-  <button onclick="shortenUrl()">Shorten</button>
-  <p id="result"></p>
+  <div id="particles-js"></div>
+  <div class="box">
+    <h1>Simple URL Shortener</h1>
+    <input type="text" id="urlInput" placeholder="Enter URL">
+    <button onclick="shortenUrl()">Shorten</button>
+    <button id="urlInput" onclick="copyLink()" style="display: none;">COPY LINK</button>
+    <p id="result"></p>
+  </div>
   <script src="script.js"></script>
+  <!-- PARTICLES LIBRARY (CDN) -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
+<!-- PARTICLES CONFIG -->
+<script>
+particlesJS("particles-js", {
+  particles: {
+    number: { value: 80 },
+    color: { value: "#000000" },
+    shape: { type: "circle" },
+    opacity: { value: 0.6 },
+    size: { value: 3, random: true },
+
+    line_linked: {
+      enable: true,
+      distance: 150,
+      color: "#000000",
+      opacity: 0.4,
+      width: 1
+    },
+
+    move: {
+      enable: true,
+      speed: 2
+    }
+  },
+
+  interactivity: {
+    detect_on: "canvas",   /* IMPORTANT */
+
+    events: {
+      onhover: {
+        enable: true,
+        mode: "grab"   /* mouse hover effect */
+      },
+      onclick: {
+        enable: true,
+        mode: "push"   /* click adds particles */
+      },
+      resize: true
+    },
+
+    modes: {
+      grab: {
+        distance: 140,
+        line_linked: {
+          opacity: 1
+        }
+      },
+      push: {
+        particles_nb: 4
+      }
+    }
+  },
+
+  retina_detect: true
+});
+</script>
 </body>
-</html>
+</html>2
